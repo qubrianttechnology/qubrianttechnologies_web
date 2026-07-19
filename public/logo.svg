@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="qGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0052ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6b0aff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main Q shape -->
+  <path d="M 50 15 C 75 15 85 30 85 50 C 85 70 75 85 50 85 C 35 85 25 78 20 68 L 35 65 C 38 72 43 75 50 75 C 68 75 75 65 75 50 C 75 35 68 25 50 25 C 35 25 28 32 25 42 L 40 42 L 40 52 L 15 52 L 15 25 L 25 25 C 28 20 40 15 50 15 Z" fill="url(#qGradient)"/>
+  
+  <!-- Tech lines -->
+  <g stroke="url(#qGradient)" stroke-width="2.5" stroke-linecap="round" fill="none">
+    <!-- Line 1 -->
+    <line x1="15" y1="35" x2="28" y2="35" />
+    <circle cx="30" cy="35" r="2.5" fill="url(#qGradient)"/>
+    
+    <!-- Line 2 -->
+    <line x1="15" y1="50" x2="28" y2="50" />
+    <circle cx="30" cy="50" r="2.5" fill="url(#qGradient)"/>
+    
+    <!-- Line 3 -->
+    <line x1="15" y1="65" x2="28" y2="65" />
+    <circle cx="30" cy="65" r="2.5" fill="url(#qGradient)"/>
+  </g>
+</svg>

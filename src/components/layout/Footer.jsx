@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { ArrowRight, Facebook, Linkedin, Instagram, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 function Footer() {
@@ -11,7 +11,7 @@ function Footer() {
             We build intelligent software, scalable platforms, AI-powered systems, and premium digital experiences for modern businesses.
           </p>
           <div className="mt-6 flex gap-3">
-            {[Github, Linkedin, Twitter, Mail].map((Icon, index) => (
+            {[Facebook, Linkedin, Instagram, Mail].map((Icon, index) => (
               <a key={index} href="#" className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-300 transition hover:border-cyan-400/40 hover:text-white">
                 <Icon size={16} />
               </a>
@@ -32,7 +32,7 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">Contact</h4>
           <ul className="mt-5 space-y-3 text-sm text-slate-400">
-            <li>hello@qubriant.com</li>
+            <li>qubrianttechnology@gmail.com</li>
             <li>+94 78 7777 216</li>
             <li>Colombo, Sri Lanka</li>
           </ul>

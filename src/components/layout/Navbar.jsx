@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { navItems } from '../../data/siteData';
 
 function Navbar() {
@@ -18,9 +18,7 @@ function Navbar() {
     <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/80 backdrop-blur-xl shadow-lg shadow-purple-950/20' : 'bg-transparent'}`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3 text-white transition-transform duration-300 hover:scale-105">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-purple-400/40 bg-gradient-to-br from-purple-500/20 to-cyan-500/20 text-purple-200 shadow-[0_0_24px_rgba(124,58,237,0.2)]">
-            <Sparkles size={18} />
-          </div>
+          <img src="/logo.png" alt="Qubriant" className="h-10 w-10 object-contain" />
           <div>
             <p className="font-heading text-lg font-semibold tracking-wide">Qubriant</p>
             <p className="text-xs text-slate-400">Technologies</p>

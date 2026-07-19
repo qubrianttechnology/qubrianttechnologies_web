@@ -1,11 +1,11 @@
 function TrustedSection() {
-  const brands = ['NovaForge', 'Northstar', 'Aurex', 'Helio', 'Lumen', 'Flux'];
+  const brands = ['React', 'Mongo DB', 'Node.js', 'Azure', 'AWS', 'Vercel'];
 
   return (
     <section className="border-y border-white/10 bg-slate-950/60 px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-slate-500">Trusted Technology</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-slate-500">Technologies We Work With</p>
           <h2 className="mt-3 font-heading text-3xl font-semibold text-white">Built for Growth, Designed with Precision.</h2>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3 lg:grid-cols-6">

@@ -96,14 +96,14 @@ export const testimonials = [
     role: 'Founder & President',
     company: 'Real Fighting Championship',
     quote: 'The team delivered a product experience that felt premium from the first sprint. Their clarity and execution stood out.',
-    image: 'assets/photo/N. S. Kumara MMA Colombo Combat Club.jpg?auto=format&fit=crop&w=200&q=80'
+    image: '/n-s-kumara-mma-colombo-combat-club.jpeg'
   },
   {
-    name: 'Daniel Ortiz',
+    name: 'Ravindu Perera',
     role: 'CEO',
-    company: 'Helio Systems',
+    company: 'Ceylon Rides',
     quote: 'Their delivery model felt like a true strategic partner, combining engineering excellence with thoughtful design.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80'
+    image: '/ravindu-perera-ceylon-rides.webp'
   }
 ];
 

@@ -1,22 +1,54 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import CTASection from '../components/sections/CTASection';
 
 function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });
   const [status, setStatus] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    emailjs.init('YOUR_PUBLIC_KEY_HERE');
+  }, []);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
     if (!form.name || !form.email || !form.message) {
       setStatus('Please complete the required fields.');
       return;
     }
+    
     if (!emailRegex.test(form.email)) {
       setStatus('Please enter a valid email address.');
       return;
     }
-    setStatus('Thank you. Your message has been received and our team will be in touch shortly.');
+
+    setLoading(true);
+    setStatus('');
+
+    try {
+      await emailjs.send('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', {
+        to_email: 'qubrianttechnology@gmail.com',
+        from_name: form.name,
+        from_email: form.email,
+        phone: form.phone,
+        company: form.company,
+        service: form.service,
+        budget: form.budget,
+        timeline: form.timeline,
+        message: form.message,
+      });
+
+      setStatus('✅ Thank you! Your inquiry has been sent successfully. We will get back to you soon.');
+      setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });
+    } catch (error) {
+      setStatus('❌ Failed to send inquiry. Please try again or contact us directly.');
+      console.error('Email error:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -44,8 +76,10 @@ function ContactPage() {
                 Attach project files
                 <input type="file" className="hidden" />
               </label>
-              <button type="submit" className="rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 px-5 py-3 text-sm font-semibold text-white md:col-span-2">Send Inquiry</button>
-              {status && <p className="text-sm text-slate-300 md:col-span-2">{status}</p>}
+              <button type="submit" disabled={loading} className="rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 px-5 py-3 text-sm font-semibold text-white md:col-span-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                {loading ? 'Sending...' : 'Send Inquiry'}
+              </button>
+              {status && <p className={`text-sm md:col-span-2 ${status.includes('✅') ? 'text-emerald-400' : 'text-red-400'}`}>{status}</p>}
             </form>
           </div>
 
@@ -70,7 +104,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <CTASection eyebrow="Need a consultation" title="Let’s map out your next digital move." description="We’re ready to support a new product, a redesign, an AI initiative, or a platform modernization project." primaryLabel="Book a Call" secondaryLabel="View Services" />
+      <CTASection eyebrow="Need a consultation" title="Let's map out your next digital move." description="We're ready to support a new product, a redesign, an AI initiative, or a platform modernization project." primaryLabel="Book a Call" secondaryLabel="View Services" primaryHref="wa.me/94724643109" secondaryHref="/services" />
     </main>
   );
 }

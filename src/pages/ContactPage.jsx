@@ -53,8 +53,8 @@ function ContactPage() {
             <div className="rounded-[32px] border border-white/10 bg-slate-900/70 p-8 backdrop-blur-xl">
               <h2 className="font-heading text-2xl font-semibold text-white">Contact details</h2>
               <ul className="mt-6 space-y-3 text-sm leading-7 text-slate-400">
-                <li>hello@qubriant.com</li>
-                <li>+94 11 234 5678</li>
+                <li>quabrianttechnology@gmail.com</li>
+                <li>+94 78 777 7216</li>
                 <li>Colombo, Sri Lanka</li>
               </ul>
             </div>

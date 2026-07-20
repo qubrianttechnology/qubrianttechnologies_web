@@ -7,8 +7,15 @@ function ContactPage() {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const EMAILJS_PUBLIC_KEY = 'TyqwNrqRGWtcy6imM';
+  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID_HERE';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE';
+  const emailjsConfigured = EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';
+
   useEffect(() => {
-    emailjs.init('TyqwNrqRGWtcy6imM');
+    if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY_HERE') {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
   }, []);
 
   const handleSubmit = async (event) => {
@@ -38,23 +45,41 @@ function ContactPage() {
         hour12: false,
       });
 
-      await emailjs.send('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', {
-        name: 'Qubriant Technologies Inquiry',
-        time: timeString,
-        from_name: form.name,
-        from_email: form.email,
-        phone: form.phone,
-        compony: form.company,
-        service: form.service,
-        budget: form.budget,
-        timeline: form.timeline,
-        message: form.message,
-      });
+      if (emailjsConfigured) {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          name: 'Qubriant Technologies Inquiry',
+          time: timeString,
+          from_name: form.name,
+          from_email: form.email,
+          phone: form.phone,
+          compony: form.company,
+          service: form.service,
+          budget: form.budget,
+          timeline: form.timeline,
+          message: form.message,
+        });
 
-      setStatus('✅ Thank you! Your inquiry has been sent successfully. We will get back to you soon.');
+        setStatus('✅ Thank you! Your inquiry has been sent successfully. We will get back to you soon.');
+      } else {
+        const subject = encodeURIComponent(`New inquiry from ${form.name}`);
+        const body = encodeURIComponent([
+          `Name: ${form.name}`,
+          `Email: ${form.email}`,
+          `Phone: ${form.phone}`,
+          `Company: ${form.company}`,
+          `Service: ${form.service}`,
+          `Budget: ${form.budget}`,
+          `Timeline: ${form.timeline}`,
+          `Message: ${form.message}`,
+        ].join('\n'));
+
+        window.location.href = `mailto:qubrianttechnology@gmail.com?subject=${subject}&body=${body}`;
+        setStatus('📧 Your email app has opened. Please send the message from there if it did not open automatically.');
+      }
+
       setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });
     } catch (error) {
-      setStatus('❌ Failed to send inquiry. Please try again or contact us directly.');
+      setStatus(`❌ ${error?.text || 'Failed to send inquiry. Please try again or contact us directly.'}`);
       console.error('Email error:', error);
     } finally {
       setLoading(false);

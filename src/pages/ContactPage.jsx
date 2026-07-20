@@ -9,7 +9,7 @@ function ContactPage() {
   const [attachments, setAttachments] = useState([]);
   const formRef = useRef(null);
 
-  const EMAILJS_PUBLIC_KEY = 'TyqwNrqRGWtcy6imM';
+  const EMAILJS_PUBLIC_KEY = 'I4KvdMD3eQ3NaryRE';
   const EMAILJS_SERVICE_ID = 'service_bovi3to';
   const EMAILJS_TEMPLATE_ID = 'template_jr2brw9';
   const emailjsConfigured = EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';

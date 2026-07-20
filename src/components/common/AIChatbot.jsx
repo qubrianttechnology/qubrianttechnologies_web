@@ -105,10 +105,6 @@ function AIChatbot() {
     setInput('');
     setIsTyping(true);
 
-    // Hide the chat panel after the user sends a message
-    // (user requested the chat to hide after sending)
-    setIsOpen(false);
-
     const reply = await getAssistantReply(trimmed);
     setMessages((prev) => [...prev, { id: Date.now() + 1, role: 'assistant', text: reply }]);
     setIsTyping(false);

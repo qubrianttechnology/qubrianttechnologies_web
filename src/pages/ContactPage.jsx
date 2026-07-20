@@ -11,7 +11,7 @@ function ContactPage() {
 
   const EMAILJS_PUBLIC_KEY = 'TyqwNrqRGWtcy6imM';
   const EMAILJS_SERVICE_ID = 'service_bovi3to';
-  const EMAILJS_TEMPLATE_ID = '__ejs-test-mail-service__';
+  const EMAILJS_TEMPLATE_ID = 'template_jr2brw9';
   const emailjsConfigured = EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';
 
   useEffect(() => {
@@ -49,21 +49,16 @@ function ContactPage() {
 
       if (emailjsConfigured) {
         const payload = {
-          name: 'Qubriant Technologies Inquiry',
-          time: timeString,
           from_name: form.name,
           from_email: form.email,
           phone: form.phone,
-          compony: form.company,
+          company: form.company,
           service: form.service,
           budget: form.budget,
           timeline: form.timeline,
           message: form.message,
+          attachments: attachments.length > 0 ? attachments.map((file) => file.name).join(', ') : 'No files attached',
         };
-
-        if (attachments.length > 0) {
-          payload.attachments = attachments.map((file) => file.name).join(', ');
-        }
 
         if (formRef.current) {
           await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current);

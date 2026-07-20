@@ -137,10 +137,10 @@ function AIChatbot() {
             </button>
           </div>
 
-          <div className="max-h-[340px] space-y-3 overflow-y-auto px-4 py-4">
+          <div className="max-h-[320px] space-y-3 overflow-y-auto px-4 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {messages.map((message) => (
               <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm leading-6 ${message.role === 'user' ? 'bg-cyan-500/20 text-cyan-100' : 'bg-white/10 text-slate-200'}`}>
+                <div className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm leading-6 break-words ${message.role === 'user' ? 'bg-cyan-500/20 text-cyan-100' : 'bg-white/10 text-slate-200'}`}>
                   {message.text}
                 </div>
               </div>

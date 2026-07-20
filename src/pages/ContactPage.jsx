@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import { useState } from 'react';
 import CTASection from '../components/sections/CTASection';
 
 function ContactPage() {
@@ -7,19 +6,7 @@ function ContactPage() {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const [attachments, setAttachments] = useState([]);
-  const formRef = useRef(null);
-
-  const EMAILJS_PUBLIC_KEY = 'I4KvdMD3eQ3NaryRE';
-  const EMAILJS_SERVICE_ID = 'service_bovi3to';
-  const EMAILJS_TEMPLATE_ID = 'template_jr2brw9';
-  const emailjsConfigured = EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';
   const TO_EMAIL = 'qubrianttechnology@gmail.com';
-
-  useEffect(() => {
-    if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY_HERE') {
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-    }
-  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -39,15 +26,6 @@ function ContactPage() {
     setStatus('');
 
     try {
-      const timeString = new Date().toLocaleString('en-GB', {
-        year: 'numeric',
-        month: 'short',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-      });
-
       const subject = encodeURIComponent(`New inquiry from ${form.name}`);
       const bodyLines = [
         `Name: ${form.name}`,
@@ -69,57 +47,11 @@ function ContactPage() {
       window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
       setStatus('📧 Your email app has opened with the inquiry details. Please send it from there if it did not open automatically.');
 
-      if (emailjsConfigured && formRef.current) {
-        try {
-          const payload = {
-            from_name: form.name,
-            from_email: form.email,
-            phone: form.phone,
-            company: form.company,
-            service: form.service,
-            budget: form.budget,
-            timeline: form.timeline,
-            message: form.message,
-            attachments: attachments.length > 0 ? attachments.map((file) => file.name).join(', ') : 'No files attached',
-          };
-
-          await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current);
-          setStatus('📧 Your email app has opened with the inquiry details. Please send it from there if it did not open automatically.');
-        } catch (emailError) {
-          console.error('EmailJS warning:', emailError);
-        }
-      }
-
       setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });
       setAttachments([]);
     } catch (error) {
       const errorText = error?.text || error?.message || 'Failed to send inquiry. Please try again or contact us directly.';
-      const isTemplateIssue = /template/i.test(errorText) || error?.status === 404;
-
-      if (isTemplateIssue) {
-        const subject = encodeURIComponent(`New inquiry from ${form.name}`);
-        const bodyLines = [
-          `Name: ${form.name}`,
-          `Email: ${form.email}`,
-          `Phone: ${form.phone}`,
-          `Company: ${form.company}`,
-          `Service: ${form.service}`,
-          `Budget: ${form.budget}`,
-          `Timeline: ${form.timeline}`,
-          `Message: ${form.message}`,
-        ];
-
-        if (attachments.length > 0) {
-          bodyLines.push(`Attachments: ${attachments.map((file) => file.name).join(', ')}`);
-        }
-
-        const body = encodeURIComponent(bodyLines.join('\n'));
-        window.location.href = `mailto:qubrianttechnology@gmail.com?subject=${subject}&body=${body}`;
-        setStatus('📧 The EmailJS template could not be used. Your email app has opened with the inquiry details so you can send it directly.');
-      } else {
-        setStatus(`❌ ${errorText}`);
-      }
-
+      setStatus(`❌ ${errorText}`);
       console.error('Email error:', error);
     } finally {
       setLoading(false);
@@ -138,7 +70,7 @@ function ContactPage() {
         <div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
             <h2 className="font-heading text-2xl font-semibold text-white">Project inquiry</h2>
-            <form ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data" className="mt-8 grid gap-4 md:grid-cols-2">
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className="mt-8 grid gap-4 md:grid-cols-2">
               <input required name="from_name" className="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-sm text-white outline-none" placeholder="Full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
               <input required name="from_email" className="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-sm text-white outline-none" placeholder="Email address" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
               <input name="phone" className="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-sm text-white outline-none" placeholder="Phone number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />

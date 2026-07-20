@@ -45,7 +45,7 @@ function ContactPage() {
       const body = encodeURIComponent(bodyLines.join('\n'));
 
       window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
-      setStatus('📧 Your email app has opened with the inquiry details. Please send it from there if it did not open automatically.');
+      setStatus('📧 Your email draft is ready. Please send it to complete the inquiry.');
 
       setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });
       setAttachments([]);

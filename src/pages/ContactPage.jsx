@@ -13,6 +13,7 @@ function ContactPage() {
   const EMAILJS_SERVICE_ID = 'service_bovi3to';
   const EMAILJS_TEMPLATE_ID = 'template_jr2brw9';
   const emailjsConfigured = EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';
+  const TO_EMAIL = 'qubrianttechnology@gmail.com';
 
   useEffect(() => {
     if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY_HERE') {
@@ -47,47 +48,46 @@ function ContactPage() {
         hour12: false,
       });
 
-      if (emailjsConfigured) {
-        const payload = {
-          from_name: form.name,
-          from_email: form.email,
-          phone: form.phone,
-          company: form.company,
-          service: form.service,
-          budget: form.budget,
-          timeline: form.timeline,
-          message: form.message,
-          attachments: attachments.length > 0 ? attachments.map((file) => file.name).join(', ') : 'No files attached',
-        };
+      const subject = encodeURIComponent(`New inquiry from ${form.name}`);
+      const bodyLines = [
+        `Name: ${form.name}`,
+        `Email: ${form.email}`,
+        `Phone: ${form.phone}`,
+        `Company: ${form.company}`,
+        `Service: ${form.service}`,
+        `Budget: ${form.budget}`,
+        `Timeline: ${form.timeline}`,
+        `Message: ${form.message}`,
+      ];
 
-        if (formRef.current) {
+      if (attachments.length > 0) {
+        bodyLines.push(`Attachments: ${attachments.map((file) => file.name).join(', ')}`);
+      }
+
+      const body = encodeURIComponent(bodyLines.join('\n'));
+
+      window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
+      setStatus('📧 Your email app has opened with the inquiry details. Please send it from there if it did not open automatically.');
+
+      if (emailjsConfigured && formRef.current) {
+        try {
+          const payload = {
+            from_name: form.name,
+            from_email: form.email,
+            phone: form.phone,
+            company: form.company,
+            service: form.service,
+            budget: form.budget,
+            timeline: form.timeline,
+            message: form.message,
+            attachments: attachments.length > 0 ? attachments.map((file) => file.name).join(', ') : 'No files attached',
+          };
+
           await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current);
-        } else {
-          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
+          setStatus('📧 Your email app has opened with the inquiry details. Please send it from there if it did not open automatically.');
+        } catch (emailError) {
+          console.error('EmailJS warning:', emailError);
         }
-
-        setStatus('✅ Thank you! Your inquiry has been sent successfully. We will get back to you soon.');
-      } else {
-        const subject = encodeURIComponent(`New inquiry from ${form.name}`);
-        const bodyLines = [
-          `Name: ${form.name}`,
-          `Email: ${form.email}`,
-          `Phone: ${form.phone}`,
-          `Company: ${form.company}`,
-          `Service: ${form.service}`,
-          `Budget: ${form.budget}`,
-          `Timeline: ${form.timeline}`,
-          `Message: ${form.message}`,
-        ];
-
-        if (attachments.length > 0) {
-          bodyLines.push(`Attachments: ${attachments.map((file) => file.name).join(', ')}`);
-        }
-
-        const body = encodeURIComponent(bodyLines.join('\n'));
-
-        window.location.href = `mailto:qubrianttechnology@gmail.com?subject=${subject}&body=${body}`;
-        setStatus('📧 Your email app has opened. Please send the message from there if it did not open automatically.');
       }
 
       setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });

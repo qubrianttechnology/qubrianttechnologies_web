@@ -6,6 +6,7 @@ function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
+  const [attachment, setAttachment] = useState(null);
 
   const EMAILJS_PUBLIC_KEY = 'TyqwNrqRGWtcy6imM';
   const EMAILJS_SERVICE_ID = 'service_bovi3to';
@@ -46,7 +47,7 @@ function ContactPage() {
       });
 
       if (emailjsConfigured) {
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        const payload = {
           name: 'Qubriant Technologies Inquiry',
           time: timeString,
           from_name: form.name,
@@ -57,12 +58,18 @@ function ContactPage() {
           budget: form.budget,
           timeline: form.timeline,
           message: form.message,
-        });
+        };
+
+        if (attachment) {
+          payload.attachment = attachment.name;
+        }
+
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
 
         setStatus('✅ Thank you! Your inquiry has been sent successfully. We will get back to you soon.');
       } else {
         const subject = encodeURIComponent(`New inquiry from ${form.name}`);
-        const body = encodeURIComponent([
+        const bodyLines = [
           `Name: ${form.name}`,
           `Email: ${form.email}`,
           `Phone: ${form.phone}`,
@@ -71,13 +78,20 @@ function ContactPage() {
           `Budget: ${form.budget}`,
           `Timeline: ${form.timeline}`,
           `Message: ${form.message}`,
-        ].join('\n'));
+        ];
+
+        if (attachment) {
+          bodyLines.push(`Attachment: ${attachment.name}`);
+        }
+
+        const body = encodeURIComponent(bodyLines.join('\n'));
 
         window.location.href = `mailto:qubrianttechnology@gmail.com?subject=${subject}&body=${body}`;
         setStatus('📧 Your email app has opened. Please send the message from there if it did not open automatically.');
       }
 
       setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });
+      setAttachment(null);
     } catch (error) {
       setStatus(`❌ ${error?.text || 'Failed to send inquiry. Please try again or contact us directly.'}`);
       console.error('Email error:', error);
@@ -107,9 +121,13 @@ function ContactPage() {
               <input className="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-sm text-white outline-none" placeholder="Estimated budget" value={form.budget} onChange={(e) => setForm({ ...form, budget: e.target.value })} />
               <input className="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-sm text-white outline-none" placeholder="Project timeline" value={form.timeline} onChange={(e) => setForm({ ...form, timeline: e.target.value })} />
               <textarea required className="min-h-[140px] rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-sm text-white outline-none md:col-span-2" placeholder="Project details" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
-              <label className="flex cursor-pointer items-center justify-center rounded-2xl border border-dashed border-white/15 bg-white/5 px-4 py-5 text-sm text-slate-400 md:col-span-2">
-                Attach project files
-                <input type="file" className="hidden" />
+              <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 bg-white/5 px-4 py-5 text-sm text-slate-400 md:col-span-2">
+                <span>{attachment ? `Attached: ${attachment.name}` : 'Attach project files'}</span>
+                <input
+                  type="file"
+                  className="hidden"
+                  onChange={(e) => setAttachment(e.target.files?.[0] || null)}
+                />
               </label>
               <button type="submit" disabled={loading} className="rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 px-5 py-3 text-sm font-semibold text-white md:col-span-2 disabled:opacity-50 disabled:cursor-not-allowed">
                 {loading ? 'Sending...' : 'Send Inquiry'}

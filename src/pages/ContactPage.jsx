@@ -8,7 +8,7 @@ function ContactPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    emailjs.init('YOUR_PUBLIC_KEY_HERE');
+    emailjs.init('TyqwNrqRGWtcy6imM');
   }, []);
 
   const handleSubmit = async (event) => {

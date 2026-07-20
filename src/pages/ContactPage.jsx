@@ -93,7 +93,33 @@ function ContactPage() {
       setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '' });
       setAttachments([]);
     } catch (error) {
-      setStatus(`❌ ${error?.text || 'Failed to send inquiry. Please try again or contact us directly.'}`);
+      const errorText = error?.text || error?.message || 'Failed to send inquiry. Please try again or contact us directly.';
+      const isTemplateIssue = /template/i.test(errorText) || error?.status === 404;
+
+      if (isTemplateIssue) {
+        const subject = encodeURIComponent(`New inquiry from ${form.name}`);
+        const bodyLines = [
+          `Name: ${form.name}`,
+          `Email: ${form.email}`,
+          `Phone: ${form.phone}`,
+          `Company: ${form.company}`,
+          `Service: ${form.service}`,
+          `Budget: ${form.budget}`,
+          `Timeline: ${form.timeline}`,
+          `Message: ${form.message}`,
+        ];
+
+        if (attachments.length > 0) {
+          bodyLines.push(`Attachments: ${attachments.map((file) => file.name).join(', ')}`);
+        }
+
+        const body = encodeURIComponent(bodyLines.join('\n'));
+        window.location.href = `mailto:qubrianttechnology@gmail.com?subject=${subject}&body=${body}`;
+        setStatus('📧 The EmailJS template could not be used. Your email app has opened with the inquiry details so you can send it directly.');
+      } else {
+        setStatus(`❌ ${errorText}`);
+      }
+
       console.error('Email error:', error);
     } finally {
       setLoading(false);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageCircle, Send, X } from 'lucide-react';
 
 const quickPrompts = ['What services do you offer?', 'Show me your portfolio', 'How much does a project cost?', 'How can I contact you?'];
@@ -90,6 +90,12 @@ function AIChatbot() {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
+  useEffect(() => {
+    // Auto-open the chat panel shortly after mount so visitors notice it
+    const t = setTimeout(() => setIsOpen(true), 600);
+    return () => clearTimeout(t);
+  }, []);
+
   const handleSend = async (value) => {
     const trimmed = value.trim();
     if (!trimmed) return;
@@ -98,6 +104,10 @@ function AIChatbot() {
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsTyping(true);
+
+    // Hide the chat panel after the user sends a message
+    // (user requested the chat to hide after sending)
+    setIsOpen(false);
 
     const reply = await getAssistantReply(trimmed);
     setMessages((prev) => [...prev, { id: Date.now() + 1, role: 'assistant', text: reply }]);

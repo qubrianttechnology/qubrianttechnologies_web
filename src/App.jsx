@@ -17,6 +17,7 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import AIChatbot from './components/common/AIChatbot';
 
 function App() {
   const location = useLocation();
@@ -52,6 +53,7 @@ function App() {
         </motion.div>
       </AnimatePresence>
       <Footer />
+      <AIChatbot />
     </div>
   );
 }

@@ -8,8 +8,8 @@ function ContactPage() {
   const [loading, setLoading] = useState(false);
 
   const EMAILJS_PUBLIC_KEY = 'TyqwNrqRGWtcy6imM';
-  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID_HERE';
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE';
+  const EMAILJS_SERVICE_ID = 'service_bovi3to';
+  const EMAILJS_TEMPLATE_ID = 'template_jr2brw9';
   const emailjsConfigured = EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';
 
   useEffect(() => {

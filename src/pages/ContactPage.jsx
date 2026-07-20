@@ -9,7 +9,7 @@ function ContactPage() {
 
   const EMAILJS_PUBLIC_KEY = 'TyqwNrqRGWtcy6imM';
   const EMAILJS_SERVICE_ID = 'service_bovi3to';
-  const EMAILJS_TEMPLATE_ID = 'template_jr2brw9';
+  const EMAILJS_TEMPLATE_ID = '__ejs-test-mail-service__';
   const emailjsConfigured = EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';
 
   useEffect(() => {

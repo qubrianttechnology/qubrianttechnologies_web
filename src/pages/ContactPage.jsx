@@ -29,12 +29,22 @@ function ContactPage() {
     setStatus('');
 
     try {
+      const timeString = new Date().toLocaleString('en-GB', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
+
       await emailjs.send('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', {
-        to_email: 'qubrianttechnology@gmail.com',
+        name: 'Qubriant Technologies Inquiry',
+        time: timeString,
         from_name: form.name,
         from_email: form.email,
         phone: form.phone,
-        company: form.company,
+        compony: form.company,
         service: form.service,
         budget: form.budget,
         timeline: form.timeline,

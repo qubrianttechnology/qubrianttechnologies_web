@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.com/</loc></url>
-  <url><loc>https://example.com/about</loc></url>
-  <url><loc>https://example.com/services</loc></url>
-  <url><loc>https://example.com/solutions</loc></url>
-  <url><loc>https://example.com/portfolio</loc></url>
-  <url><loc>https://example.com/industries</loc></url>
-  <url><loc>https://example.com/technologies</loc></url>
-  <url><loc>https://example.com/careers</loc></url>
-  <url><loc>https://example.com/insights</loc></url>
-  <url><loc>https://example.com/contact</loc></url>
-  <url><loc>https://example.com/privacy-policy</loc></url>
-  <url><loc>https://example.com/terms</loc></url>
+  <url><loc>https://qubriant.com/</loc></url>
+  <url><loc>https://qubriant.com/about</loc></url>
+  <url><loc>https://qubriant.com/services</loc></url>
+  <url><loc>https://qubriant.com/solutions</loc></url>
+  <url><loc>https://qubriant.com/portfolio</loc></url>
+  <url><loc>https://qubriant.com/industries</loc></url>
+  <url><loc>https://qubriant.com/technologies</loc></url>
+  <url><loc>https://qubriant.com/careers</loc></url>
+  <url><loc>https://qubriant.com/insights</loc></url>
+  <url><loc>https://qubriant.com/contact</loc></url>
+  <url><loc>https://qubriant.com/privacy-policy</loc></url>
+  <url><loc>https://qubriant.com/terms</loc></url>
 </urlset>

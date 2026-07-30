@@ -6,7 +6,7 @@ function CTASection({ eyebrow, title, description, primaryLabel, secondaryLabel,
   const isSecondaryExternal = secondaryHref?.startsWith('http') || secondaryHref?.startsWith('wa.me');
 
   return (
-    <section className="px-4 py-20 sm:px-6 lg:px-8">
+    <section className="site-cta px-4 py-20 sm:px-6 lg:px-8">
       <div className="noise relative mx-auto max-w-7xl overflow-hidden rounded-[36px] border border-[#0052ff]/20 bg-[#0b1628] p-8 shadow-[0_25px_90px_rgba(0,0,0,.35)] sm:p-12">
         <div className="max-w-3xl">
           {eyebrow && <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#0052ff]">— {eyebrow}</p>}

@@ -47,8 +47,38 @@ body {
 .marquee-track { animation: marquee 26s linear infinite; }
 .float-slow { animation: float 6s ease-in-out infinite; }
 
+/* Keep every inner page on the same responsive spacing rhythm. */
+main:not(.overflow-hidden) {
+  padding-top: clamp(4rem, 7vw, 6rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+main:not(.overflow-hidden) > section + section {
+  margin-top: clamp(4.5rem, 8vw, 7rem);
+}
+
+main:not(.overflow-hidden) > .site-cta {
+  padding: 0;
+}
+
+main:not(.overflow-hidden) .grid > .card-reveal {
+  height: 100%;
+}
+
+.section-reveal,
 .card-reveal {
   opacity: 0;
+  will-change: opacity, transform;
+}
+
+.section-reveal {
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity .7s cubic-bezier(.22, 1, .36, 1) var(--section-delay, 0ms),
+    transform .7s cubic-bezier(.22, 1, .36, 1) var(--section-delay, 0ms);
+}
+
+.card-reveal {
   transform: translate3d(0, 24px, 0) scale(.985);
   transition:
     opacity .65s cubic-bezier(.22, 1, .36, 1) var(--card-delay, 0ms),
@@ -56,12 +86,16 @@ body {
     border-color .3s ease,
     background-color .3s ease,
     box-shadow .3s ease;
-  will-change: opacity, transform;
 }
 
-.card-reveal.card-reveal--visible {
+.section-reveal.reveal-visible,
+.card-reveal.reveal-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
+}
+
+.card-reveal.reveal-visible:hover {
+  transform: translate3d(0, -6px, 0) scale(1);
 }
 
 @keyframes marquee { to { transform: translateX(-50%); } }

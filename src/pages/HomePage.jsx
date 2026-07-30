@@ -1,16 +1,24 @@
 import { motion } from 'framer-motion';
+import { ArrowUpRight, BadgeCheck, Bot, Boxes, CloudCog, Code2, Smartphone, Store, Stethoscope, Truck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import HeroSection from '../components/sections/HeroSection';
 import TrustedSection from '../components/sections/TrustedSection';
 import SectionHeading from '../components/ui/SectionHeading';
 import ServiceCard from '../components/ui/ServiceCard';
-import ProjectCard from '../components/ui/ProjectCard';
-import AnimatedCounter from '../components/ui/AnimatedCounter';
-import TestimonialCard from '../components/ui/TestimonialCard';
 import ProcessTimeline from '../components/sections/ProcessTimeline';
 import CTASection from '../components/sections/CTASection';
-import { services, projects, stats, testimonials, technologies } from '../data/siteData';
-import { ArrowRight, ShieldCheck, Layers3, Rocket, MessageCircleMore, Zap, BadgeCheck } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { services, technologies } from '../data/siteData';
+
+const outcomes = [
+  { number: '01', title: 'Think beyond the brief', copy: 'We challenge assumptions, find the highest-value opportunity and create a practical product roadmap.' },
+  { number: '02', title: 'Design for real people', copy: 'Every interaction is clear, intentional and shaped around the people who will actually use it.' },
+  { number: '03', title: 'Engineer for tomorrow', copy: 'Secure, maintainable architecture gives your product room to evolve without slowing down.' }
+];
+
+const industries = [
+  ['Healthcare', Stethoscope], ['Fintech', Boxes], ['E-commerce', Store],
+  ['Logistics', Truck], ['AI products', Bot], ['Startups', Code2]
+];
 
 function HomePage() {
   return (
@@ -18,103 +26,48 @@ function HomePage() {
       <HeroSection />
       <TrustedSection />
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
+      <section className="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Services" title="Premium software solutions, carefully engineered." description="From strategic consulting to long-term maintenance, we build with a premium blend of craft, intelligence, and operational readiness." />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {services.map((service) => (
-              <ServiceCard key={service.title} {...service} />
+          <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+            <SectionHeading eyebrow="What we do" title="One partner. Every digital capability." description="From the first sketch to production at scale, our multidisciplinary team takes responsibility for the complete product journey." />
+            <Link to="/services" className="group inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#0052ff]">View all services <ArrowUpRight className="transition group-hover:rotate-45" size={18} /></Link>
+          </div>
+          <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {services.slice(0, 8).map((service) => <ServiceCard key={service.title} {...service} />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#eaf4ff] px-4 py-24 text-[#071426] sm:px-6 lg:px-8 lg:py-32">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-bold uppercase tracking-[.28em] text-[#3e6688]">— The Qubriant difference</p>
+          <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_.85fr]">
+            <h2 className="max-w-3xl font-heading text-4xl font-semibold leading-[1.05] tracking-[-.04em] sm:text-6xl">We don’t just ship code. We solve the right problem.</h2>
+            <p className="max-w-xl text-lg leading-8 text-[#4c6680]">Strong digital products sit where business strategy, human experience and engineering discipline meet. That intersection is where we do our best work.</p>
+          </div>
+          <div className="mt-16 grid border-y border-black/15 lg:grid-cols-3">
+            {outcomes.map((item, index) => (
+              <motion.article key={item.number} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .1 }} className="border-b border-black/15 py-9 lg:border-b-0 lg:border-r lg:px-8 lg:first:pl-0 lg:last:border-r-0">
+                <span className="font-heading text-sm font-bold text-[#2563eb]">{item.number}</span>
+                <h3 className="mt-8 font-heading text-2xl font-semibold">{item.title}</h3>
+                <p className="mt-4 leading-7 text-[#526b83]">{item.copy}</p>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="rounded-[32px] border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-950/80 p-8 shadow-[0_0_50px_rgba(2,8,23,0.45)]">
-            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-300">About Qubriant</p>
-            <h2 className="mt-4 font-heading text-3xl font-semibold text-white">Technology designed around your business.</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-400">
-              Qubriant combines software engineering, intelligent automation, user-centered design, and strategic thinking to create secure, scalable, and high-performing digital products.
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {[
-                ['Innovation', 'Forward-looking systems and elegant execution.'],
-                ['Security', 'Responsible engineering with a strong foundation.'],
-                ['Scalability', 'Built to adapt as teams and operations grow.'],
-                ['Support', 'Long-term care for reliable product performance.']
-              ].map(([title, copy]) => (
-                <div key={title} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="font-semibold text-white">{title}</p>
-                  <p className="mt-2 text-sm text-slate-400">{copy}</p>
-                </div>
-              ))}
-            </div>
-            <Link to="/about" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300">
-              Learn more about us <ArrowRight size={16} />
-            </Link>
-          </motion.div>
-          <div className="overflow-hidden rounded-[32px] border border-white/10 bg-slate-950/70 p-6 shadow-[0_0_50px_rgba(124,58,237,0.18)]">
-            <div className="rounded-[24px] border border-white/10 bg-gradient-to-br from-purple-500/15 to-cyan-500/15 p-8">
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
-                  <ShieldCheck className="text-cyan-300" size={24} />
-                  <h3 className="mt-4 font-heading text-xl font-semibold text-white">Secure by Design</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">Security, privacy, and resilience shape every layer of our delivery model.</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
-                  <Layers3 className="text-purple-300" size={24} />
-                  <h3 className="mt-4 font-heading text-xl font-semibold text-white">Scalable Foundations</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">Composable architecture supports rapid growth and new product initiatives.</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
-                  <Rocket className="text-cyan-300" size={24} />
-                  <h3 className="mt-4 font-heading text-xl font-semibold text-white">Agile Delivery</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">Focused execution that keeps projects moving while maintaining quality.</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
-                  <MessageCircleMore className="text-purple-300" size={24} />
-                  <h3 className="mt-4 font-heading text-xl font-semibold text-white">Transparent Communication</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">Clear collaboration, shared visibility, and thoughtful decision-making.</p>
-                </div>
-              </div>
-            </div>
+      <section className="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.8fr_1.2fr]">
+          <div>
+            <SectionHeading eyebrow="Built for your world" title="Industry context changes everything." description="We bring adaptable technology and domain-aware thinking to organizations at every stage of growth." />
+            <Link to="/industries" className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white hover:border-[#0052ff]">Explore industries <ArrowUpRight size={17} /></Link>
           </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Why Qubriant" title="A premium experience from strategy to support." description="We combine business focus, design clarity, engineering excellence, and long-term partnership in every engagement." />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {[
-              ['Business-focused solutions', 'Product thinking aligned with your commercial goals.'],
-              ['Scalable architecture', 'Future-ready systems built for growth.'],
-              ['Modern technology stack', 'Reliable tools and practices for speed and quality.'],
-              ['Secure development practices', 'A strong foundation for trust and resilience.'],
-              ['Transparent communication', 'Open collaboration and shared visibility.'],
-              ['Agile delivery', 'Iterative progress with measurable outcomes.'],
-              ['Long-term technical support', 'Care that continues beyond launch.'],
-              ['User-centered design', 'Interfaces crafted around meaningful interactions.']
-            ].map(([title, copy]) => (
-              <div key={title} className="rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/20 to-cyan-500/20 text-cyan-300">
-                  <Zap size={18} />
-                </div>
-                <h3 className="font-heading text-xl font-semibold text-white">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">{copy}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Featured Projects" title="Sample work that demonstrates our approach." description="These demonstration projects reflect how we shape software experiences for ambitious teams and growing organizations." />
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            {projects.map((project) => (
-              <ProjectCard key={project.name} project={project} />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {industries.map(([name, Icon], index) => (
+              <motion.div key={name} initial={{ opacity: 0, x: 18 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * .06 }} className="group flex items-center justify-between rounded-2xl border border-white/10 bg-[#091426] p-6 transition hover:border-[#0052ff]/40">
+                <span className="font-heading text-lg font-semibold">{name}</span><Icon className="text-[#647b96] transition group-hover:text-[#0052ff]" size={22} />
+              </motion.div>
             ))}
           </div>
         </div>
@@ -122,49 +75,27 @@ function HomePage() {
 
       <ProcessTimeline />
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Technology Stack" title="Built with modern tools that support speed, quality, and scalability." description="We select the right stack for each product so teams can move confidently and deliver with clarity." />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {Object.entries(technologies).map(([category, items]) => (
-              <div key={category} className="rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-                <h3 className="font-heading text-xl font-semibold capitalize text-white">{category}</h3>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <span key={item} className="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-sm text-slate-200">{item}</span>
-                  ))}
+      <section className="px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl rounded-[36px] border border-white/10 bg-[#091426] p-7 sm:p-12">
+          <div className="grid gap-12 lg:grid-cols-[.65fr_1.35fr]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[.28em] text-[#6b0aff]">Technology, with purpose</p>
+              <h2 className="mt-5 font-heading text-3xl font-semibold leading-tight sm:text-4xl">The right stack for the challenge.</h2>
+              <div className="mt-7 flex gap-3 text-[#0052ff]"><CloudCog /><Smartphone /><BadgeCheck /></div>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {Object.entries(technologies).map(([category, items]) => (
+                <div key={category}>
+                  <h3 className="text-xs font-bold uppercase tracking-[.2em] text-[#7288a1]">{category}</h3>
+                  <p className="mt-3 text-sm leading-7 text-[#c4d2e3]">{items.join(' · ')}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Impact" title="Placeholder statistics for future verification." description="These values should be replaced with verified company metrics before launch or publication." />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {stats.map((stat) => (
-              <AnimatedCounter key={stat.label} value={stat.value.replace(/\D/g, '')} label={stat.label} suffix={stat.value.includes('+') ? '+' : ''} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Testimonials" title="Placeholder client feedback for future publication." description="Only genuine testimonials should be published on the live site." />
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {testimonials.map((testimonial, index) => (
-              <motion.div key={testimonial.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <TestimonialCard testimonial={testimonial} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTASection eyebrow="Let’s build" title="Have an idea? Let’s build something exceptional." description="Share your vision with Qubriant and turn it into a secure, scalable, and powerful digital solution." primaryLabel="Discuss Your Project" secondaryLabel="Contact Our Team" />
+      <CTASection eyebrow="Your next move" title="Ready to turn complexity into momentum?" description="Tell us what you’re building, fixing or reimagining. We’ll bring the product thinking and engineering to move it forward." primaryLabel="Talk to our team" secondaryLabel="See our capabilities" secondaryHref="/services" />
     </main>
   );
 }

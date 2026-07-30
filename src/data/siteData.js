@@ -56,6 +56,30 @@ export const services = [
     description: 'Ongoing support, monitoring, upgrades, and technical excellence to keep your products reliable.',
     icon: 'ShieldCheck',
     link: '/services'
+  },
+  {
+    title: 'SaaS & Enterprise Platforms',
+    description: 'Multi-tenant SaaS, ERP, CRM, portals, and business systems built around complex operational workflows.',
+    icon: 'Building2',
+    link: '/services'
+  },
+  {
+    title: 'E-commerce Development',
+    description: 'High-converting storefronts, marketplaces, payment integrations, and scalable commerce operations.',
+    icon: 'ShoppingBag',
+    link: '/services'
+  },
+  {
+    title: 'Data Engineering & Analytics',
+    description: 'Reliable data pipelines, business intelligence dashboards, reporting, and actionable decision systems.',
+    icon: 'ChartNoAxesCombined',
+    link: '/services'
+  },
+  {
+    title: 'Cybersecurity & Quality Assurance',
+    description: 'Security reviews, automated testing, performance engineering, and quality practices that reduce risk.',
+    icon: 'LockKeyhole',
+    link: '/services'
   }
 ];
 
@@ -124,7 +148,7 @@ export const stats = [
 ];
 
 export const industries = [
-  'Healthcare', 'Education', 'Tourism', 'E-commerce', 'Fitness and Sports', 'Finance', 'Professional Services', 'Logistics', 'Startups', 'SMBs'
+  'Healthcare', 'Education', 'Tourism and Hospitality', 'Retail and E-commerce', 'Fitness and Sports', 'Banking and Fintech', 'Professional Services', 'Logistics and Transportation', 'Real Estate', 'Manufacturing', 'Media and Entertainment', 'Government', 'Startups', 'SMBs'
 ];
 
 export const teamMembers = [

@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const siteUrl = 'https://qubriant.com';
-const defaultKeywords = 'software company, AI solutions, custom software development, web development, mobile app development, AI automation, software engineering, digital transformation';
+const defaultKeywords = 'software development company Sri Lanka, custom software development, AI development, web application development, mobile app development, SaaS development, enterprise software, cloud DevOps, UI UX design, ecommerce development, API integration, digital transformation';
 
 const pageMeta = {
   '/': {
     title: 'Qubriant Technologies | Custom Software, AI & Digital Solutions',
-    description: 'Qubriant Technologies delivers custom software, AI solutions, web applications, mobile apps, and digital transformation services for ambitious global businesses.',
+    description: 'Qubriant Technologies is a Sri Lankan software company delivering custom software, AI automation, web and mobile apps, SaaS, cloud, DevOps and digital transformation worldwide.',
     keywords: defaultKeywords
   },
   '/about': {
@@ -115,6 +115,20 @@ function PageMeta() {
           url: siteUrl,
           logo: `${siteUrl}/logo.png`,
           description: 'Qubriant Technologies builds custom software, AI solutions, and digital platforms for global businesses.',
+          email: 'info@qubriant.com',
+          telephone: '+94 72 261 6616',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Colombo',
+            addressCountry: 'LK'
+          },
+          contactPoint: {
+            '@type': 'ContactPoint',
+            telephone: '+94 72 261 6616',
+            contactType: 'sales',
+            email: 'info@qubriant.com',
+            availableLanguage: ['English', 'Sinhala']
+          },
           sameAs: []
         },
         {
@@ -126,6 +140,15 @@ function PageMeta() {
           publisher: {
             '@id': `${siteUrl}/#organization`
           }
+        },
+        {
+          '@type': 'ProfessionalService',
+          name: 'Qubriant Technologies',
+          url: siteUrl,
+          email: 'info@qubriant.com',
+          telephone: '+94 72 261 6616',
+          areaServed: 'Worldwide',
+          serviceType: ['Custom Software Development', 'Artificial Intelligence Development', 'Web Application Development', 'Mobile App Development', 'SaaS Development', 'Cloud and DevOps', 'UI/UX Design', 'API Integration']
         }
       ]
     });

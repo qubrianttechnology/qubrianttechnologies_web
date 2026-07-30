@@ -120,7 +120,7 @@ function AIChatbot() {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-2xl shadow-cyan-500/20 transition hover:scale-105"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0052ff] text-white shadow-2xl shadow-[#0052ff]/10 transition hover:scale-105"
         aria-label={isOpen ? 'Close chat assistant' : 'Open chat assistant'}
       >
         {isOpen ? <X size={22} /> : <MessageCircle size={22} />}
@@ -130,7 +130,7 @@ function AIChatbot() {
         <div className="mb-3 mx-auto w-[92vw] max-w-[92vw] sm:max-w-sm overflow-hidden rounded-[28px] border border-white/10 bg-slate-950/95 shadow-2xl shadow-black/40 backdrop-blur-xl">
           <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white">
+              <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-[#0052ff] text-white">
                 <img src="/ai-chatbot-pic.jpg" alt="Assistant" className="h-full w-full object-cover" />
               </div>
               <div>
@@ -179,7 +179,7 @@ function AIChatbot() {
                 placeholder="Ask about our services..."
                 className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
               />
-              <button type="submit" className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white">
+              <button type="submit" className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0052ff] text-white">
                 <Send size={16} />
               </button>
             </form>

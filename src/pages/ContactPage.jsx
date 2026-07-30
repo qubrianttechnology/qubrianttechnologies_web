@@ -6,7 +6,7 @@ function ContactPage() {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const [attachments, setAttachments] = useState([]);
-  const TO_EMAIL = 'qubrianttechnology@gmail.com';
+  const TO_EMAIL = 'info@qubriant.com';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -108,7 +108,7 @@ function ContactPage() {
                   </ul>
                 )}
               </div>
-              <button type="submit" disabled={loading} className="rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 px-5 py-3 text-sm font-semibold text-white md:col-span-2 disabled:opacity-50 disabled:cursor-not-allowed">
+              <button type="submit" disabled={loading} className="rounded-full bg-[#0052ff] px-5 py-3 text-sm font-bold text-white transition hover:bg-white md:col-span-2 disabled:cursor-not-allowed disabled:opacity-50">
                 {loading ? 'Sending...' : 'Send Inquiry'}
               </button>
               {status && <p className={`text-sm md:col-span-2 ${status.includes('✅') ? 'text-emerald-400' : 'text-red-400'}`}>{status}</p>}
@@ -119,8 +119,8 @@ function ContactPage() {
             <div className="rounded-[32px] border border-white/10 bg-slate-900/70 p-8 backdrop-blur-xl">
               <h2 className="font-heading text-2xl font-semibold text-white">Contact details</h2>
               <ul className="mt-6 space-y-3 text-sm leading-7 text-slate-400">
-                <li>quabrianttechnology@gmail.com</li>
-                <li>+94 78 777 7216</li>
+                <li><a href="mailto:info@qubriant.com" className="hover:text-[#0052ff]">info@qubriant.com</a></li>
+                <li><a href="tel:+94722616616" className="hover:text-[#0052ff]">0722 616 616</a></li>
                 <li>Colombo, Sri Lanka</li>
               </ul>
             </div>
@@ -136,7 +136,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <CTASection eyebrow="Need a consultation" title="Let's map out your next digital move." description="We're ready to support a new product, a redesign, an AI initiative, or a platform modernization project." primaryLabel="Book a Call" secondaryLabel="View Services" primaryHref="wa.me/94724643109" secondaryHref="/services" />
+      <CTASection eyebrow="Need a consultation" title="Let's map out your next digital move." description="We're ready to support a new product, a redesign, an AI initiative, or a platform modernization project." primaryLabel="WhatsApp us" secondaryLabel="View Services" primaryHref="https://wa.me/94722616616" secondaryHref="/services" />
     </main>
   );
 }

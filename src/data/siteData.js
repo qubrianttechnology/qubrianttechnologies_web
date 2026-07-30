@@ -19,19 +19,19 @@ export const services = [
     title: 'AI and Automation Solutions',
     description: 'Intelligent assistants, workflow automation, and machine learning systems that accelerate operations.',
     icon: 'Sparkles',
-    link: '/solutions'
+    link: '/services/ai-automation'
   },
   {
     title: 'Web Application Development',
     description: 'Modern, responsive, and high-conversion digital platforms built with cutting-edge frontend and backend technologies.',
     icon: 'Globe',
-    link: '/services'
+    link: '/services/web-application-development'
   },
   {
     title: 'Mobile Application Development',
     description: 'Cross-platform mobile experiences that feel premium and deliver seamless user journeys.',
     icon: 'Smartphone',
-    link: '/services'
+    link: '/services/mobile-app-development'
   },
   {
     title: 'Cloud and DevOps Solutions',
@@ -55,7 +55,7 @@ export const services = [
     title: 'Software Support and Maintenance',
     description: 'Ongoing support, monitoring, upgrades, and technical excellence to keep your products reliable.',
     icon: 'ShieldCheck',
-    link: '/services'
+    link: '/services/custom-software-development'
   },
   {
     title: 'SaaS & Enterprise Platforms',

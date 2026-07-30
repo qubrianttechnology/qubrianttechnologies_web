@@ -8,7 +8,7 @@ function PortfolioPage() {
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-300">Portfolio</p>
           <h1 className="mt-4 font-heading text-4xl font-semibold text-white sm:text-5xl">Selected projects that show our product thinking and execution.</h1>
-          <p className="mt-6 text-lg leading-8 text-slate-400">These are sample portfolio pieces intended to illustrate the quality and depth of our work.</p>
+          <p className="mt-6 text-lg leading-8 text-slate-400">Explore selected products and platforms that demonstrate our approach to strategy, experience design, and dependable engineering.</p>
         </div>
 
         <div className="mt-16 space-y-8">

@@ -17,6 +17,7 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 import CardAnimations from './components/common/CardAnimations';
 import WhatsAppButton from './components/common/WhatsAppButton';
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:serviceSlug" element={<ServiceDetailPage />} />
             <Route path="/solutions" element={<SolutionsPage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/industries" element={<IndustriesPage />} />

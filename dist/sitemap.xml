@@ -3,6 +3,14 @@
   <url><loc>https://qubriant.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://qubriant.com/about</loc></url>
   <url><loc>https://qubriant.com/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qubriant.com/services/custom-software-development</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qubriant.com/services/web-development</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qubriant.com/services/web-application-development</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qubriant.com/services/mobile-app-development</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qubriant.com/services/ai-development</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qubriant.com/services/ai-automation</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qubriant.com/services/ai-chatbot-development</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qubriant.com/services/ai-agent-development</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://qubriant.com/solutions</loc></url>
   <url><loc>https://qubriant.com/portfolio</loc></url>
   <url><loc>https://qubriant.com/industries</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

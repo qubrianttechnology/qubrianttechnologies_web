@@ -1,6 +1,8 @@
 import SectionHeading from '../components/ui/SectionHeading';
 import CTASection from '../components/sections/CTASection';
 import { services } from '../data/siteData';
+import { Link } from 'react-router-dom';
+import { servicePageList } from '../data/servicePages';
 
 function ServicesPage() {
   return (
@@ -14,7 +16,7 @@ function ServicesPage() {
 
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
           {services.map((service) => (
-            <div key={service.title} className="rounded-[28px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <Link to={service.link} key={service.title} className="group rounded-[28px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition hover:-translate-y-1 hover:border-[#0052ff]/50">
               <h2 className="font-heading text-2xl font-semibold text-white">{service.title}</h2>
               <p className="mt-4 text-lg leading-8 text-slate-400">{service.description}</p>
               <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -27,8 +29,17 @@ function ServicesPage() {
                   <p className="mt-2 text-sm leading-7 text-slate-400">Modern architecture, secure delivery, and scalable product practices.</p>
                 </div>
               </div>
-            </div>
+              <span className="mt-6 inline-block text-sm font-semibold text-[#4f86ff]">Explore service →</span>
+            </Link>
           ))}
+        </div>
+        <div className="mt-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">Explore specialist services</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {servicePageList.map((service) => (
+              <Link key={service.slug} to={`/services/${service.slug}`} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 hover:border-[#0052ff]/50 hover:text-white">{service.name}</Link>
+            ))}
+          </div>
         </div>
       </section>
 

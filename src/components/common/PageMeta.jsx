@@ -1,159 +1,112 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { servicePages } from '../../data/servicePages';
+import { serviceContent } from '../../data/serviceContent';
 
 const siteUrl = 'https://qubriant.com';
-const defaultKeywords = 'software development company Sri Lanka, custom software development, AI development, web application development, mobile app development, SaaS development, enterprise software, cloud DevOps, UI UX design, ecommerce development, API integration, digital transformation';
+const defaultKeywords = 'software development company Sri Lanka, custom software development, AI development, web application development, mobile app development, SaaS development, enterprise software';
 
 const pageMeta = {
-  '/': {
-    title: 'Qubriant Technologies | Custom Software, AI & Digital Solutions',
-    description: 'Qubriant Technologies is a Sri Lankan software company delivering custom software, AI automation, web and mobile apps, SaaS, cloud, DevOps and digital transformation worldwide.',
-    keywords: defaultKeywords
-  },
-  '/about': {
-    title: 'About Qubriant Technologies',
-    description: 'Learn about Qubriant’s mission, values, leadership, and technology philosophy for building modern digital products.',
-    keywords: 'software company, technology company, digital innovation, software engineering, AI development'
-  },
-  '/services': {
-    title: 'Services | Qubriant Technologies',
-    description: 'Explore Qubriant’s custom software, AI, web, mobile, cloud, and support services designed for growth and efficiency.',
-    keywords: 'custom software development, AI solutions, web development services, mobile app development, cloud services'
-  },
-  '/solutions': {
-    title: 'Solutions | Qubriant Technologies',
-    description: 'Discover AI assistants, automation systems, e-commerce platforms, CRM solutions, and modern software experiences from Qubriant.',
-    keywords: 'AI automation, CRM solutions, e-commerce development, business software solutions, digital transformation'
-  },
-  '/portfolio': {
-    title: 'Portfolio | Qubriant Technologies',
-    description: 'Review sample projects and product work from Qubriant Technologies across AI, web, mobile, and enterprise platforms.',
-    keywords: 'software portfolio, AI projects, web app projects, mobile app case studies, product development work'
-  },
-  '/industries': {
-    title: 'Industries | Qubriant Technologies',
-    description: 'Discover how Qubriant creates digital products for healthcare, education, tourism, finance, startups, and growing businesses.',
-    keywords: 'industry software solutions, healthcare software, education technology, tourism platforms, fintech solutions'
-  },
-  '/technologies': {
-    title: 'Technologies | Qubriant Technologies',
-    description: 'See the modern technology stack used by Qubriant to build premium software products, AI systems, and scalable platforms.',
-    keywords: 'React, Next.js, Node.js, Python, AWS, AI tools, modern software stack'
-  },
-  '/careers': {
-    title: 'Careers | Qubriant Technologies',
-    description: 'Explore software engineering roles and internship opportunities at Qubriant Technologies.',
-    keywords: 'software jobs, frontend developer jobs, backend developer jobs, AI engineer internship, remote tech jobs'
-  },
-  '/insights': {
-    title: 'Insights | Qubriant Technologies',
-    description: 'Read insights on AI, product design, software engineering, and digital transformation from the Qubriant team.',
-    keywords: 'AI insights, software engineering blog, product design insights, digital transformation trends'
-  },
-  '/contact': {
-    title: 'Contact Qubriant Technologies',
-    description: 'Get in touch with Qubriant Technologies to discuss your next digital project, product vision, or software need.',
-    keywords: 'contact software company, AI development consultation, custom software quote, web development contact'
-  },
-  '/privacy-policy': {
-    title: 'Privacy Policy | Qubriant Technologies',
-    description: 'Review Qubriant’s privacy policy and how data is handled on the website.',
-    keywords: 'privacy policy, website privacy, data handling policy'
-  },
-  '/terms': {
-    title: 'Terms and Conditions | Qubriant Technologies',
-    description: 'Review the website terms and conditions for using Qubriant Technologies services and content.',
-    keywords: 'website terms, service terms, conditions of use'
-  }
+  '/': ['Qubriant Technologies | Custom Software, AI & Digital Solutions', 'Qubriant Technologies delivers custom software, AI automation, web and mobile apps, SaaS, cloud, and digital transformation worldwide.'],
+  '/about': ['About Qubriant Technologies', 'Learn about Qubriant’s mission, values, leadership, and technology philosophy for building modern digital products.'],
+  '/services': ['Software Development Services | Qubriant Technologies', 'Explore custom software, AI, web, mobile, cloud, and support services designed for business growth and operational efficiency.'],
+  '/solutions': ['Business Technology Solutions | Qubriant Technologies', 'Discover AI assistants, automation systems, e-commerce platforms, and modern business software solutions from Qubriant.'],
+  '/portfolio': ['Software Development Portfolio | Qubriant Technologies', 'Review product work from Qubriant Technologies across AI, web, mobile, and enterprise platforms.'],
+  '/industries': ['Industry Software Solutions | Qubriant Technologies', 'Discover digital products for healthcare, education, tourism, finance, startups, and growing businesses.'],
+  '/technologies': ['Our Technology Stack | Qubriant Technologies', 'See the modern technologies Qubriant uses to build software products, AI systems, and scalable platforms.'],
+  '/careers': ['Careers | Qubriant Technologies', 'Explore software engineering roles and internship opportunities at Qubriant Technologies.'],
+  '/insights': ['Technology Insights | Qubriant Technologies', 'Read insights on AI, product design, software engineering, and digital transformation from Qubriant.'],
+  '/contact': ['Contact Qubriant Technologies', 'Contact Qubriant Technologies to discuss your next digital product, software project, or AI solution.'],
+  '/privacy-policy': ['Privacy Policy | Qubriant Technologies', 'Review Qubriant’s privacy policy and how data is handled on this website.'],
+  '/terms': ['Terms and Conditions | Qubriant Technologies', 'Review the terms and conditions for using Qubriant Technologies services and website.']
+};
+
+const setMeta = (selector, value) => {
+  document.querySelector(selector)?.setAttribute('content', value);
 };
 
 function PageMeta() {
   const location = useLocation();
-  const meta = pageMeta[location.pathname] || pageMeta['/'];
+  const slug = location.pathname.startsWith('/services/') ? location.pathname.split('/')[2] : null;
+  const service = slug ? servicePages[slug] : null;
+  const fallback = pageMeta[location.pathname] || pageMeta['/'];
+  const title = service?.title || fallback[0];
+  const description = service?.metaDescription || fallback[1];
+  const keywords = service ? `${service.name}, ${service.name} company, ${service.name} services, software development company Sri Lanka` : defaultKeywords;
 
   useEffect(() => {
     const canonicalUrl = `${siteUrl}${location.pathname === '/' ? '/' : location.pathname}`;
+    document.title = title;
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[name="keywords"]', keywords);
+    setMeta('meta[name="robots"]', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[property="og:url"]', canonicalUrl);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
 
-    document.title = meta.title;
-
-    const setMetaContent = (selector, value) => {
-      const element = document.querySelector(selector);
-      if (element) {
-        element.setAttribute('content', value);
+    document.getElementById('qubriant-schema')?.remove();
+    const graph = [
+      {
+        '@type': 'Organization',
+        '@id': `${siteUrl}/#organization`,
+        name: 'Qubriant Technologies',
+        url: siteUrl,
+        logo: `${siteUrl}/logo.png`,
+        email: 'info@qubriant.com',
+        telephone: '+94 72 261 6616',
+        address: { '@type': 'PostalAddress', addressLocality: 'Colombo', addressCountry: 'LK' }
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: 'Qubriant Technologies',
+        publisher: { '@id': `${siteUrl}/#organization` }
       }
-    };
+    ];
 
-    setMetaContent('meta[name="description"]', meta.description);
-    setMetaContent('meta[name="keywords"]', meta.keywords || defaultKeywords);
-    setMetaContent('meta[name="robots"]', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
-    setMetaContent('meta[property="og:title"]', meta.title);
-    setMetaContent('meta[property="og:description"]', meta.description);
-    setMetaContent('meta[property="og:url"]', canonicalUrl);
-    setMetaContent('meta[name="twitter:title"]', meta.title);
-    setMetaContent('meta[name="twitter:description"]', meta.description);
-
-    const canonicalTag = document.querySelector('link[rel="canonical"]');
-    if (canonicalTag) {
-      canonicalTag.setAttribute('href', canonicalUrl);
-    }
-
-    const existingSchema = document.getElementById('qubriant-schema');
-    if (existingSchema) {
-      existingSchema.remove();
-    }
-
-    const schemaScript = document.createElement('script');
-    schemaScript.id = 'qubriant-schema';
-    schemaScript.type = 'application/ld+json';
-    schemaScript.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@graph': [
+    if (service) {
+      const content = serviceContent[slug];
+      graph.push(
         {
-          '@type': 'Organization',
-          '@id': `${siteUrl}/#organization`,
-          name: 'Qubriant Technologies',
-          url: siteUrl,
-          logo: `${siteUrl}/logo.png`,
-          description: 'Qubriant Technologies builds custom software, AI solutions, and digital platforms for global businesses.',
-          email: 'info@qubriant.com',
-          telephone: '+94 72 261 6616',
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: 'Colombo',
-            addressCountry: 'LK'
-          },
-          contactPoint: {
-            '@type': 'ContactPoint',
-            telephone: '+94 72 261 6616',
-            contactType: 'sales',
-            email: 'info@qubriant.com',
-            availableLanguage: ['English', 'Sinhala']
-          },
-          sameAs: []
-        },
-        {
-          '@type': 'WebSite',
-          '@id': `${siteUrl}/#website`,
-          url: siteUrl,
-          name: 'Qubriant Technologies',
-          description: 'Software development, AI solutions, and digital transformation services for modern businesses.',
-          publisher: {
-            '@id': `${siteUrl}/#organization`
-          }
-        },
-        {
-          '@type': 'ProfessionalService',
-          name: 'Qubriant Technologies',
-          url: siteUrl,
-          email: 'info@qubriant.com',
-          telephone: '+94 72 261 6616',
+          '@type': 'Service',
+          '@id': `${canonicalUrl}#service`,
+          name: service.name,
+          description,
+          url: canonicalUrl,
+          provider: { '@id': `${siteUrl}/#organization` },
           areaServed: 'Worldwide',
-          serviceType: ['Custom Software Development', 'Artificial Intelligence Development', 'Web Application Development', 'Mobile App Development', 'SaaS Development', 'Cloud and DevOps', 'UI/UX Design', 'API Integration']
+          serviceType: service.name
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+            { '@type': 'ListItem', position: 2, name: 'Services', item: `${siteUrl}/services` },
+            { '@type': 'ListItem', position: 3, name: service.name, item: canonicalUrl }
+          ]
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: content.faqs.map(([question, answer]) => ({
+            '@type': 'Question',
+            name: question,
+            acceptedAnswer: { '@type': 'Answer', text: answer }
+          }))
         }
-      ]
-    });
-    document.head.appendChild(schemaScript);
-  }, [location.pathname, meta]);
+      );
+    }
+
+    const schema = document.createElement('script');
+    schema.id = 'qubriant-schema';
+    schema.type = 'application/ld+json';
+    schema.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+    document.head.appendChild(schema);
+    return () => schema.remove();
+  }, [location.pathname, title, description, keywords, service]);
 
   return null;
 }

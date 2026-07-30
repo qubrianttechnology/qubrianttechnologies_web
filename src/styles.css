@@ -47,6 +47,23 @@ body {
 .marquee-track { animation: marquee 26s linear infinite; }
 .float-slow { animation: float 6s ease-in-out infinite; }
 
+.card-reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0) scale(.985);
+  transition:
+    opacity .65s cubic-bezier(.22, 1, .36, 1) var(--card-delay, 0ms),
+    transform .65s cubic-bezier(.22, 1, .36, 1) var(--card-delay, 0ms),
+    border-color .3s ease,
+    background-color .3s ease,
+    box-shadow .3s ease;
+  will-change: opacity, transform;
+}
+
+.card-reveal.card-reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes float { 50% { transform: translateY(-12px) rotate(2deg); } }
 

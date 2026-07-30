@@ -17,7 +17,8 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
-import AIChatbot from './components/common/AIChatbot';
+import CardAnimations from './components/common/CardAnimations';
+import WhatsAppButton from './components/common/WhatsAppButton';
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
       <Navbar />
       <PageMeta />
       <ScrollToTop />
+      <CardAnimations />
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}
@@ -53,7 +55,7 @@ function App() {
         </motion.div>
       </AnimatePresence>
       <Footer />
-      <AIChatbot />
+      <WhatsAppButton />
     </div>
   );
 }

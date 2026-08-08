@@ -41,7 +41,15 @@ function AboutPage() {
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {teamMembers.map((member, index) => (
             <motion.div key={member.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} className="rounded-[28px] border border-white/10 bg-slate-900/70 p-8 backdrop-blur-xl">
-              <div className="h-14 w-14 rounded-full bg-gradient-to-br from-purple-500/30 to-cyan-500/20" />
+              {member.image ? (
+                <img
+                  src={member.image}
+                  alt={`${member.name}, ${member.role}`}
+                  className="h-24 w-24 rounded-full border-2 border-cyan-300/30 object-cover object-top shadow-lg shadow-cyan-950/30"
+                />
+              ) : (
+                <div className="h-24 w-24 rounded-full bg-gradient-to-br from-purple-500/30 to-cyan-500/20" />
+              )}
               <h3 className="mt-6 font-heading text-2xl font-semibold text-white">{member.name}</h3>
               <p className="mt-2 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">{member.role}</p>
               <p className="mt-4 text-sm leading-7 text-slate-400">{member.bio}</p>

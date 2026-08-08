@@ -152,9 +152,9 @@ export const industries = [
 ];
 
 export const teamMembers = [
-  { name: 'Aloka Pradeep', role: 'CEO & Founder', bio: 'Leads product strategy, delivery excellence, and global partnerships.' },
-  { name: 'Prashan Himesh', role: 'CTO', bio: 'Shapes scalable architecture, engineering standards, and technical innovation.' },
-  { name: 'Pawani Kulasekara', role: 'Customer Support & Communication', bio: 'Creates elegant and thoughtful digital experiences with strategic clarity.' }
+  { name: 'Aloka Pradeep', role: 'CEO & Founder', bio: 'Leads product strategy, delivery excellence, and global partnerships.', image: '/blaser blue 2.png' },
+  { name: 'Prashan Himesh', role: 'Co Founder', bio: 'Shapes scalable architecture, engineering standards, and technical innovation.' },
+  { name: 'Dushan Liyanage', role: 'CTO', bio: 'Creates elegant and thoughtful digital experiences with strategic clarity.', image: '/dushan photo.jpeg' }
 ];
 
 export const jobOpenings = [

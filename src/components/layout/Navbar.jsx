@@ -15,6 +15,13 @@ function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -67,7 +74,7 @@ function Navbar() {
         {mobileOpen && (
           <>
             <motion.button type="button" aria-label="Close navigation" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileOpen(false)} className="fixed inset-0 z-40 bg-[#020611]/65 backdrop-blur-[2px] lg:hidden" />
-            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ duration: .3, ease: [0.22, 1, 0.36, 1] }} className="fixed inset-y-0 right-0 z-50 w-[75vw] max-w-sm border-l border-white/10 bg-[#071426]/[.98] pt-24 shadow-[-20px_0_70px_rgba(0,0,0,.35)] backdrop-blur-2xl lg:hidden">
+            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ duration: .3, ease: [0.22, 1, 0.36, 1] }} className="fixed inset-y-0 right-0 z-50 w-[75vw] max-w-sm border-l border-white/10 bg-[#071426] pt-24 shadow-[-20px_0_70px_rgba(0,0,0,.45)] lg:hidden">
               <div className="flex flex-col gap-2 px-5 py-5">
                 <p className="mb-3 px-3 text-[10px] font-bold uppercase tracking-[.28em] text-[#65d9ff]">Navigation</p>
               {navItems.map((item, index) => (

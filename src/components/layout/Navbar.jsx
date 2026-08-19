@@ -65,8 +65,11 @@ function Navbar() {
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: .3, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden border-t border-white/10 bg-[#050b18]/95 backdrop-blur-2xl lg:hidden">
-            <div className="flex flex-col gap-2 px-4 py-5">
+          <>
+            <motion.button type="button" aria-label="Close navigation" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileOpen(false)} className="fixed inset-0 z-40 bg-[#020611]/65 backdrop-blur-[2px] lg:hidden" />
+            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ duration: .3, ease: [0.22, 1, 0.36, 1] }} className="fixed inset-y-0 right-0 z-50 w-[75vw] max-w-sm border-l border-white/10 bg-[#071426]/[.98] pt-24 shadow-[-20px_0_70px_rgba(0,0,0,.35)] backdrop-blur-2xl lg:hidden">
+              <div className="flex flex-col gap-2 px-5 py-5">
+                <p className="mb-3 px-3 text-[10px] font-bold uppercase tracking-[.28em] text-[#65d9ff]">Navigation</p>
               {navItems.map((item, index) => (
                 <motion.div key={item.path} initial={{ x: -14, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: index * .035 }}>
                   <NavLink to={item.path} onClick={() => setMobileOpen(false)} className={({ isActive }) => `block rounded-xl px-3 py-2.5 text-sm font-medium transition ${isActive ? 'bg-[#0052ff]/10 text-[#5f8cff]' : 'text-slate-300 hover:bg-white/5 hover:text-white'}`}>
@@ -77,8 +80,9 @@ function Navbar() {
               <Link to="/contact" onClick={() => setMobileOpen(false)} className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#0052ff] px-4 py-3 text-sm font-bold text-white">
                 Start a Project <ArrowUpRight size={16} />
               </Link>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>

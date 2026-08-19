@@ -7,6 +7,11 @@
   font-family: 'DM Sans', sans-serif;
   background-color: #050b18;
   color: #eef6ff;
+  --ink: #eef6ff;
+  --muted: #9fb2ca;
+  --blue: #2d6bff;
+  --cyan: #65d9ff;
+  --panel: #0a1629;
 }
 
 html {
@@ -16,9 +21,24 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at 78% 8%, rgba(0,82,255,.14), transparent 22%), #050b18;
+  background:
+    radial-gradient(circle at 82% 0%, rgba(45,107,255,.2), transparent 28%),
+    radial-gradient(circle at 8% 45%, rgba(101,217,255,.06), transparent 24%),
+    #050b18;
   color: #eef6ff;
   overflow-x: hidden;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: '';
+  opacity: .26;
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
 }
 
 * {
@@ -44,7 +64,7 @@ body {
   -webkit-text-stroke: 1px rgba(242,245,237,.42);
 }
 
-.marquee-track { animation: marquee 26s linear infinite; }
+.marquee-track { animation: marquee 32s linear infinite; }
 .float-slow { animation: float 6s ease-in-out infinite; }
 
 /* Keep every inner page on the same responsive spacing rhythm. */

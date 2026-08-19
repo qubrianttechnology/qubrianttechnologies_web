@@ -5,7 +5,6 @@ import HeroSection from '../components/sections/HeroSection';
 import TrustedSection from '../components/sections/TrustedSection';
 import SectionHeading from '../components/ui/SectionHeading';
 import ServiceCard from '../components/ui/ServiceCard';
-import ProcessTimeline from '../components/sections/ProcessTimeline';
 import CTASection from '../components/sections/CTASection';
 import { services, technologies } from '../data/siteData';
 
@@ -72,8 +71,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      <ProcessTimeline />
 
       <section className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl rounded-[36px] border border-white/10 bg-[#091426] p-7 sm:p-12">

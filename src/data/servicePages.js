@@ -55,7 +55,7 @@ export const servicePages = {
     intro: 'AI creates value when it is grounded in a clear business problem, dependable data, and a well-designed workflow. We help you identify the right opportunity, validate it quickly, and engineer a solution your team can trust.',
     outcomes: ['Transform business knowledge into useful intelligence', 'Accelerate analysis and decision-making', 'Create differentiated AI-powered products', 'Deploy AI with security and human oversight'],
     capabilities: ['AI product discovery and prototyping', 'Generative AI applications', 'Retrieval-augmented generation (RAG)', 'Natural language processing', 'Computer vision', 'Model integration and evaluation'],
-    technologies: ['OpenAI APIs', 'Python', 'LangChain', 'Qdrant', 'PostgreSQL', 'AWS', 'Docker'],
+    technologies: ['Python', 'LangChain', 'Qdrant', 'PostgreSQL', 'AWS', 'Docker'],
     title: 'AI Development Company | Qubriant Technologies',
     metaDescription: 'Build production-ready AI solutions with Qubriant, including generative AI apps, RAG systems, NLP, computer vision, model integration, and evaluation.'
   },
@@ -67,7 +67,7 @@ export const servicePages = {
     intro: 'The most valuable automations do more than move data. They understand context, support decisions, and keep people in control. We map your workflow, identify high-return opportunities, and build dependable automations around them.',
     outcomes: ['Reduce repetitive manual work', 'Respond to customers and teams faster', 'Lower errors across complex processes', 'Create visibility into every automated workflow'],
     capabilities: ['Workflow discovery and automation strategy', 'Document and email processing', 'AI-assisted customer operations', 'Sales and marketing automation', 'Internal knowledge workflows', 'System and API orchestration'],
-    technologies: ['OpenAI APIs', 'Python', 'Node.js', 'n8n', 'Make', 'Zapier', 'AWS'],
+    technologies: ['Python', 'Node.js', 'n8n', 'Make', 'Zapier', 'AWS'],
     title: 'AI Automation Services | Qubriant Technologies',
     metaDescription: 'Automate documents, customer operations, sales, support, and internal workflows with secure AI automation designed around your existing systems.'
   },
@@ -79,7 +79,7 @@ export const servicePages = {
     intro: 'A useful chatbot needs more than a language model. It needs accurate knowledge, clear conversation design, safe escalation, and access to the right business actions. We build every layer into one reliable experience.',
     outcomes: ['Provide immediate, consistent customer support', 'Answer questions from approved business knowledge', 'Qualify leads and guide customer journeys', 'Escalate complex requests to the right person'],
     capabilities: ['Website and in-app AI chatbots', 'Customer support assistants', 'Knowledge-base and RAG chatbots', 'WhatsApp and omnichannel bots', 'CRM and helpdesk integration', 'Analytics, guardrails, and human handoff'],
-    technologies: ['OpenAI APIs', 'Python', 'Node.js', 'Qdrant', 'WhatsApp', 'CRM APIs'],
+    technologies: ['Python', 'Node.js', 'Qdrant', 'WhatsApp'],
     title: 'AI Chatbot Development Company | Qubriant',
     metaDescription: 'Qubriant builds secure AI chatbots for websites, apps, WhatsApp, support, and lead generation with RAG, integrations, analytics, and human handoff.'
   },
@@ -91,7 +91,7 @@ export const servicePages = {
     intro: 'AI agents can coordinate multi-step work that traditional automation cannot handle, but production use demands careful boundaries and observability. We combine agent design, tool integration, evaluation, and human approval into secure systems.',
     outcomes: ['Coordinate complex multi-step workflows', 'Give teams intelligent operational support', 'Connect knowledge with real business actions', 'Maintain control through approvals and audit trails'],
     capabilities: ['Agent strategy and use-case validation', 'Single and multi-agent systems', 'Tool and API integration', 'Knowledge and memory architecture', 'Evaluation, monitoring, and guardrails', 'Human-in-the-loop workflows'],
-    technologies: ['OpenAI APIs', 'Python', 'Node.js', 'LangGraph', 'Vector Databases', 'AWS'],
+    technologies: ['Python', 'Node.js', 'LangGraph', 'Vector Databases', 'AWS'],
     title: 'AI Agent Development Company | Qubriant',
     metaDescription: 'Build secure, production-ready AI agents with Qubriant. We develop tool-using agents, multi-agent systems, guardrails, evaluations, and human approvals.'
   }

@@ -137,7 +137,7 @@ export const technologies = {
   mobile: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
   databases: ['MongoDB', 'MySQL', 'PostgreSQL', 'Qdrant'],
   cloud: ['AWS', 'Docker', 'GitHub', 'CI/CD'],
-  ai: ['OpenAI APIs', 'Machine Learning', 'NLP', 'Computer Vision', 'Vector Databases', 'RAG']
+  ai: ['Machine Learning', 'NLP', 'Computer Vision', 'Vector Databases', 'RAG']
 };
 
 export const stats = [

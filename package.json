@@ -1,27 +1,13 @@
 {
-  "name": "qubriant-technologies",
-  "private": true,
+  "name": "qubriant-workspace",
   "version": "1.0.0",
-  "type": "module",
+  "private": true,
+  "description": "Launcher for the single Qubriant website",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "framer-motion": "^11.11.9",
-    "lucide-react": "^0.468.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.21.1",
-    "swiper": "^14.0.5"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "vite": "^7.3.6"
+    "dev": "node qubriant-site/server.mjs",
+    "start": "node qubriant-site/server.mjs",
+    "build": "node qubriant-site/build.mjs",
+    "check": "npm --prefix qubriant-site run check",
+    "test": "node qubriant-site/server.test.mjs"
   }
 }

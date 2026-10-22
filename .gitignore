@@ -1,5 +1,4 @@
+.backups/
 node_modules/
-.env
-dist/
-build/
-.vscode/
+qa-*/
+*.log

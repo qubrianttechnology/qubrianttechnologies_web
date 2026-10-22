@@ -7,7 +7,8 @@ Keep those commands and the repository root directory. The root `wrangler.jsonc`
 now explicitly points Wrangler at `qubriant-site/dist`. Workers Builds supplies
 the existing Worker name through its CI environment; no guessed Worker name is
 hard-coded. For a local manual deployment, pass `--name YOUR_EXISTING_WORKER`.
-HTML filenames are preserved, and missing pages use the existing `404.html`.
+Automatic HTML handling serves `index.html` at `/` and redirects `.html` links
+to clean URLs. Missing pages use the existing `404.html`.
 The Node chat backend is not deployed by this static-assets configuration.
 
 ## Alternative: Pages project

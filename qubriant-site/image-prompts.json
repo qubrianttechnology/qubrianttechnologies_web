@@ -5,6 +5,12 @@
       "name": "team",
       "prompt": "Use case: stylized-concept. Asset type: Qubriant technology company website, team page hero image. Create a premium photorealistic architectural concept of a collaborative software design studio, NOT a real office documentary photo: a refined meeting table with several open laptops showing abstract blue UI shapes, notebooks and a few elegant office chairs, glass partition, soft greenery and distant tropical daylight through tall windows. No people. Calm confident atmosphere, realistic glass, brushed metal and wood, navy blue, white and restrained electric cyan accents to fit a white and blue software-company website. Landscape 3:2 image, central composition that also survives a square crop, beautiful depth, soft cinematic light. No words, no logos, no watermark, no readable interface text. Output one finished website image, not a collage.",
       "asset": "dist/assets/images/generated/qubriant-team.png"
+    },
+    {
+      "name": "qubriant-robot",
+      "method": "Built-in image_gen, reference-based generation and anatomy correction",
+      "asset": "dist/assets/images/generated/qubriant-robot.png",
+      "prompt": "Premium original Qubriant company robot mascot. Pearl white ceramic armor, midnight navy visor with friendly cyan eyes, electric blue and violet illuminated seams. Circuit-Q brand emblem on chest and laptop; exact QUBRIANT lettering below chest emblem. Three-quarter waist-up composition, exactly two arms and two hands supporting a slim laptop, small floating holographic code panel. Clean silhouette, studio lighting, transparent background. Preserve logo, friendly face and colors while removing extra raised pointing arm."
     }
   ]
 }

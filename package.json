@@ -1,0 +1,13 @@
+{
+  "name": "qubriant-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Launcher for the single Qubriant website",
+  "scripts": {
+    "dev": "node qubriant-site/server.mjs",
+    "start": "node qubriant-site/server.mjs",
+    "build": "node qubriant-site/build.mjs",
+    "check": "npm --prefix qubriant-site run check",
+    "test": "node qubriant-site/server.test.mjs"
+  }
+}

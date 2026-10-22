@@ -1,4 +1,16 @@
-# Cloudflare Pages automatic deployment
+# Cloudflare automatic deployment
+
+## Existing Workers build (confirmed by deployment logs)
+
+The current dashboard runs `npm run build` followed by `npx wrangler deploy`.
+Keep those commands and the repository root directory. The root `wrangler.jsonc`
+now explicitly points Wrangler at `qubriant-site/dist`. Workers Builds supplies
+the existing Worker name through its CI environment; no guessed Worker name is
+hard-coded. For a local manual deployment, pass `--name YOUR_EXISTING_WORKER`.
+HTML filenames are preserved, and missing pages use the existing `404.html`.
+The Node chat backend is not deployed by this static-assets configuration.
+
+## Alternative: Pages project
 
 Connect the GitHub repository `qubrianttechnology/qubrianttechnologies_web` to a **Pages** project, using these settings:
 

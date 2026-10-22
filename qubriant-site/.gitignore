@@ -1,0 +1,10 @@
+reference/
+qa/
+__pycache__/
+*.tar.gz
+*.log
+research.py
+.env
+.env.*
+!.env.example
+.site-workflow*
